@@ -1,0 +1,62 @@
+{% extends "todoapp/base.html" %} 
+{% block content %}
+<header class="site-header">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand mr-4" href="{% url 'todo-home' %}"
+        ><img class="mr-3" src="https://img.icons8.com/color-glass/30/000000/list.png"/>To-Do</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarToggle"
+        aria-controls="navbarToggle"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarToggle">
+        <!-- Navbar Right Side -->
+        <div class="navbar-nav ml-auto">
+          <span class="hello-msg nav-item nav-link"
+            >Hello, {{request.user}}</span
+          >
+          <span
+          ><a class="nav-item nav-link" href="{% url 'todo-create' %}"
+            >Create New</a
+          ></span
+          >
+          <span
+            ><a class="nav-item nav-link" href="{% url 'logout' %}"
+              >Logout</a
+            ></span
+          >
+        </div>
+      </div>
+    </div>
+  </nav>
+  <h1 class="display-2 text-white text-center m-5 pt-4">To-Do App !</h1>
+</header>
+{% for todo in todos %}
+  <div class="row card-body border border-dark mb-2">
+    <div class="col-8">{{ todo.todo_text }}</div>
+    <div class="col-4 d-flex flex-row justify-content-around">
+      <div class="d-none d-sm-block">{{ todo.date_posted | date:"F d, Y" }}</div>
+      <div><a class="text-decoration-none" href="{% url 'todo-update' todo.id %}"
+        ><img src="https://img.icons8.com/windows/32/000000/approve-and-update.png"/></div></a>
+      <div><a class="text-decoration-none" href="{% url 'todo-delete' todo.id %}"
+        ><img src="https://img.icons8.com/ios-glyphs/30/000000/filled-trash.png"/></div></a>
+    </div>
+  </div>
+{% endfor %}
+<div class="row justify-content-md-center">
+  <div class="col col-sm-4">
+    <a class="text-decoration-none" href="{% url 'todo-create' %}"
+      ><button type="button" class="btn btn-primary btn-lg btn-block mt-2">
+        Add New To-do
+      </button>
+    </a>
+  </div>
+</div>
+{% endblock %}

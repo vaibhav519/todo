@@ -1,0 +1,19 @@
+{% extends "todoapp/base.html" %} {% block content %}
+
+<h1 class="text-white text-center m-5">Add To-do</h1>
+<div class="row justify-content-md-center">
+  <div class="col col-md-6">
+    <form method="POST">
+      {% csrf_token %}
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4"></legend>
+        {{ form.todo_text }}
+      </fieldset>
+      <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

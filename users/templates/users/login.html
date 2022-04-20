@@ -1,0 +1,64 @@
+{% extends "todoapp/base.html" %} {% block content %}
+<div class="container py-5 h-100">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+      <div class="card shadow-2-strong" style="border-radius: 1rem">
+        <div class="card-body p-5 text-center">
+          <h3 class="mb-5">LOGIN NOW</h3>
+          <form method="POST" action="">
+            {% csrf_token %}
+            <div class="form-outline mb-4">
+              <input
+                type="username"
+                class="form-control form-control-lg"
+                placeholder="Username"
+                name="username"
+              />
+            </div>
+
+            <div class="form-outline mb-4">
+              <input
+                type="password"
+                class="form-control form-control-lg"
+                placeholder="Password"
+                name="password"
+              />
+              {% if messages %}
+              {% for message in messages %}
+                  {% if message.tags == "incorrect_details info" %}
+                      <p class="text-danger">{{ message }}</p>
+                  {% endif %}
+              {% endfor %}
+              {% endif %}
+            </div>
+
+            <!-- Checkbox -->
+            <div class="form-check d-flex justify-content-start mb-4">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="form1Example3"
+              />
+              <label class="form-check-label" for="form1Example3">
+                Remember password
+              </label>
+            <div class="col">
+                <!-- Simple link -->        
+                <a href="#!">Forgot password?</a>
+            </div>
+            </div>
+
+            <button class="btn btn-primary btn-lg btn-block" type="submit">
+              Login
+            </button>
+            <div class="text-center mt-2">
+                <p>Not a member? <a href="{% url 'register' %}">Register</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
