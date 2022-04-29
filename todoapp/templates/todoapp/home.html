@@ -4,7 +4,7 @@
   <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <div class="container">
       <a class="navbar-brand mr-4" href="{% url 'todo-home' %}"
-        ><img class="mr-3" src="https://img.icons8.com/color-glass/30/000000/list.png"/>To-Do</a>
+        ><img class="mr-2" src="https://img.icons8.com/color-glass/30/000000/double-tick.png"/>To-Do</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -24,7 +24,7 @@
           >
           <span
           ><a class="nav-item nav-link" href="{% url 'todo-create' %}"
-            >Create New</a
+            >Add Task</a
           ></span
           >
           <span
@@ -38,6 +38,7 @@
   </nav>
   <h1 class="display-2 text-white text-center m-5 pt-4">To-Do App !</h1>
 </header>
+<div class="p-2 p-sm-0">
 {% for todo in todos %}
   <div class="row card-body border border-dark mb-2">
     <div class="col-8">{{ todo.todo_text }}</div>
@@ -50,6 +51,7 @@
     </div>
   </div>
 {% endfor %}
+</div>
 <div class="row justify-content-md-center">
   <div class="col col-sm-4">
     <a class="text-decoration-none" href="{% url 'todo-create' %}"

@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField(widget=forms.EmailInput(
-        attrs={'class': 'form-control form-control-lg', 'placeholder': "Your Email"}))
+        attrs={'class': 'form-control form-control-lg', 'placeholder': "Email"}))
 
     class Meta:
         model = User
@@ -15,7 +15,7 @@ class UserRegisterForm(UserCreationForm):
         super(UserRegisterForm, self).__init__(*args, **kwargs)
         
         self.fields['username'].widget.attrs["class"] = 'form-control form-control-lg'
-        self.fields['username'].widget.attrs["placeholder"] = 'Your Name'
+        self.fields['username'].widget.attrs["placeholder"] = 'Username'
         self.fields['password1'].widget.attrs["class"] = 'form-control form-control-lg'
         self.fields['password1'].widget.attrs["placeholder"] = 'Password'
         self.fields['password2'].widget.attrs["class"] = 'form-control form-control-lg'

@@ -11,11 +11,12 @@ def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
+            user = form.save()
+            if user is not None:
+                login(request, user)
             messages.success(
                 request, f'Your account has been created ! You are now able to login ')
-            return redirect('login')
+            return redirect('todo-home')
     else:
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
@@ -30,8 +31,9 @@ def loginPage(request):
             login(request, user)
             return redirect('todo-home')
         else:
-            messages.info(request, "Username or password is incorrect", extra_tags="incorrect_details")
-    
+            messages.info(request, "Username or password is incorrect",
+                          extra_tags="incorrect_details")
+
     form = UserCreationForm()
     context = {'form': form}
     return render(request, 'users/login.html', context)

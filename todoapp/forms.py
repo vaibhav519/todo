@@ -8,5 +8,5 @@ class ToDoForm(forms.ModelForm):
         fields = ['todo_text']
 
         widgets = {
-            'todo_text': forms.TextInput(attrs={'class': 'form-control form-control-lg', 'placeholder': "Buy Groceries..."})
+            'todo_text': forms.TextInput(attrs={'class': 'form-control form-control-lg', 'placeholder': "Enter Task"})
         }
