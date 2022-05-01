@@ -3,8 +3,8 @@
   <div class="row d-flex justify-content-center align-items-center h-100">
     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
       <div class="card shadow-2-strong" style="border-radius: 1rem">
-        <div class="card-body p-5 text-center">
-          <h3 class="mb-5">LOGIN NOW</h3>
+        <div class="card-body p-5">
+          <h3 class="mb-5 text-center">LOGIN NOW</h3>
           <form method="POST" action="">
             {% csrf_token %}
             <div class="form-outline mb-4">
@@ -17,12 +17,15 @@
             </div>
 
             <div class="form-outline mb-4">
-              <input
-                type="password"
-                class="form-control form-control-lg"
-                placeholder="Password"
-                name="password"
-              />
+              <div class="input-group">
+                <input
+                  type="password"
+                  class="form-control form-control-lg"
+                  placeholder="Password"
+                  name="password"
+                  data-toggle="password"
+                />
+              </div>
               {% if messages %}
               {% for message in messages %}
                   {% if message.tags == "incorrect_details info" %}
@@ -34,19 +37,21 @@
 
             <!-- Checkbox -->
             <div class="form-check d-flex justify-content-start mb-4">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id="form1Example3"
-              />
-              <label class="form-check-label" for="form1Example3">
-                Remember password
-              </label>
-            <div class="col">
+              <div>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="form1Example3"
+                />
+                <label class="form-check-label" for="form1Example3">
+                  Remember password
+                </label>
+              </div>
+              <div class="col ml-2">
                 <!-- Simple link -->        
                 <a href="#!">Forgot password?</a>
-            </div>
+              </div>
             </div>
 
             <button class="btn btn-primary btn-lg btn-block" type="submit">
