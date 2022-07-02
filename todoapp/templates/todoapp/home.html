@@ -41,7 +41,15 @@
 <div class="p-2 p-sm-0">
 {% for todo in todos %}
   <div class="row card-body border border-dark mb-2">
-    <div class="col-8">{{ todo.todo_text }}</div>
+    <div class=" col-8 form-check">
+      <input class="form-check-input" type="checkbox" value="" id="check">
+      <label class="form-check-label ml-1" for="check">{{todo.todo_text}}</label>
+      <style>
+        #check[type=checkbox]:checked + label{
+          text-decoration: line-through; 
+          }
+      </style>
+    </div>
     <div class="col-4 d-flex flex-row justify-content-around">
       <div class="d-none d-sm-block">{{ todo.date_posted | date:"F d, Y" }}</div>
       <div><a class="text-decoration-none" href="{% url 'todo-update' todo.id %}"
