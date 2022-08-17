@@ -42,7 +42,7 @@
 {% for todo in todos %}
   <div class="row card-body border border-dark mb-2">
     <div class=" col-8 form-check">
-      <input class="form-check-input" type="checkbox" value="" id="check">
+      <input class="form-check-input" onclick="audio.play()"  type="checkbox" value="" id="check">
       <label class="form-check-label ml-1" for="check">{{todo.todo_text}}</label>
       <style>
         #check[type=checkbox]:checked + label{
