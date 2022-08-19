@@ -4,7 +4,7 @@
   <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <div class="container">
       <a class="navbar-brand mr-4" href="{% url 'todo-home' %}"
-        ><img class="mr-2" src="https://img.icons8.com/color-glass/30/000000/double-tick.png"/>To-Do</a>
+        ><img class="mr-2" src="https://cdn-icons-png.flaticon.com/24/2107/2107638.png"/>To-Do</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -39,26 +39,37 @@
   <h1 class="display-2 text-white text-center m-5 pt-4">To-Do App !</h1>
 </header>
 <div class="p-2 p-sm-0">
+<div class="scrollbar">
+  <style>
+    .scrollbar{
+      overflow-y: scroll; 
+      height: 328px;
+    }
+    ::-webkit-scrollbar{
+      display: none;
+    }
+  </style>
 {% for todo in todos %}
-  <div class="row card-body border border-dark mb-2">
-    <div class=" col-8 form-check">
-      <input class="form-check-input" onclick="audio.play()"  type="checkbox" value="" id="check">
-      <label class="form-check-label ml-1" for="check">{{todo.todo_text}}</label>
-      <style>
-        #check[type=checkbox]:checked + label{
-          text-decoration: line-through; 
-          }
-      </style>
+    <div class="row card-body border border-dark m-2">
+      <div class=" col-8 form-check">
+        <input class="form-check-input"  type="checkbox" value="" id="check">
+        <label class="form-check-label ml-1" for="check">{{todo.todo_text}}</label>
+        <style>
+          #check[type=checkbox]:checked + label{
+            text-decoration: line-through;
+            }
+        </style>
+      </div>
+      <div class="col-4 d-flex flex-row justify-content-around">
+        <div class="d-none d-sm-block">{{ todo.date_posted | date:"F d, Y" }}</div>
+        <div><a class="text-decoration-none" href="{% url 'todo-update' todo.id %}"
+          ><img src="https://img.icons8.com/windows/32/000000/approve-and-update.png"/></div></a>
+        <div><a class="text-decoration-none" href="{% url 'todo-delete' todo.id %}"
+          ><img src="https://img.icons8.com/ios-glyphs/30/000000/filled-trash.png"/></div></a>
+      </div>
     </div>
-    <div class="col-4 d-flex flex-row justify-content-around">
-      <div class="d-none d-sm-block">{{ todo.date_posted | date:"F d, Y" }}</div>
-      <div><a class="text-decoration-none" href="{% url 'todo-update' todo.id %}"
-        ><img src="https://img.icons8.com/windows/32/000000/approve-and-update.png"/></div></a>
-      <div><a class="text-decoration-none" href="{% url 'todo-delete' todo.id %}"
-        ><img src="https://img.icons8.com/ios-glyphs/30/000000/filled-trash.png"/></div></a>
-    </div>
-  </div>
 {% endfor %}
+</div>
 </div>
 <div class="row justify-content-md-center">
   <div class="col col-sm-4">
