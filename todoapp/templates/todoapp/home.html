@@ -1,6 +1,6 @@
 {% extends "todoapp/base.html" %} 
 {% block content %}
-<header class="site-header">
+<header class="site-header mb-5">
   <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <div class="container">
       <a class="navbar-brand mr-4" href="{% url 'todo-home' %}"
@@ -36,8 +36,12 @@
       </div>
     </div>
   </nav>
-  <h1 class="display-2 text-white text-center mt-5 mb-4 pt-4">To-Do App !</h1>
 </header>
+<div style="margin-top: 7rem;">
+<div class="input-group input-group-lg mb-2">
+  <input type="text" class="form-control" placeholder="Add Task..." style="height: 3.7rem;">
+    <button class="btn btn-primary" type="button">Submit</button>
+</div>
 <div class="scrollbar">
   <style>
     .scrollbar{
@@ -84,14 +88,6 @@
     </div>
 {% endfor %}
 </div>
-
-<div class="row justify-content-md-center">
-  <div class="col col-sm-4">
-    <a class="text-decoration-none" href="{% url 'todo-create' %}"
-      ><button type="button" class="btn btn-primary btn-lg btn-block mt-4">
-        Add New To-do
-      </button>
-    </a>
-  </div>
 </div>
+
 {% endblock %}
