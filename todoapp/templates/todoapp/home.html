@@ -39,11 +39,18 @@
 </header>
 <div style="margin-top: 7rem;">
 <div class="input-group input-group-lg mb-2">
-  <input type="text" class="form-control" placeholder="Add Task..." style="height: 3.7rem;">
-    <button class="btn btn-primary" type="button">Submit</button>
+  <input type="text" class="form-control input" placeholder="Add Task..." style="height: 3.7rem;">
+  <button class="todo-button" type="submit">
+    <i class="fa-solid fa-square-plus"></i>
+  </button>
 </div>
 <div class="scrollbar">
   <style>
+    .input, .todo-button {
+      padding: 0.5rem;
+      border: none;
+      
+    }
     .scrollbar{
       overflow-y: auto; 
       max-height: 410px;
