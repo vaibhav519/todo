@@ -38,26 +38,31 @@
   </nav>
 </header>
 <div style="margin-top: 7rem;">
-<div class="input-group input-group-lg mb-2">
+<div class="input-group input-group-lg mb-3" style="max-width: 1110px;">
   <input type="text" class="form-control input" placeholder="Add Task..." style="height: 3.7rem;">
   <button class="todo-button" type="submit">
-    <i class="fa-solid fa-square-plus"></i>
+    <i class="fa-solid fa-square-plus fa-2xl" style="margin-right: 0.7rem;"></i>
   </button>
 </div>
 <div class="scrollbar">
   <style>
-    .input, .todo-button {
-      padding: 0.5rem;
+    .input {
+      background: white;
       border: none;
-      
+    } 
+    .todo-button {
+      border: none;
+      background: white;
+      border-radius: 0.4rem;
     }
     .scrollbar{
-      overflow-y: auto; 
-      max-height: 410px;
+      overflow-y: scroll; 
+      max-height: 500px;
     }
     ::-webkit-scrollbar {
       width: 6px;
       height: 10px;
+      display: none;
       }
 
     ::-webkit-scrollbar-track {
@@ -75,7 +80,7 @@
       }
   </style>
 {% for todo in todos %}
-    <div class="row card-body border border-dark" style="margin: 0.5rem 0.5rem 0 0;">
+    <div class="row card-body border border-dark" style="margin: 0.5rem 0 0 0;">
       <div class=" col-8 form-check">
         <input class="form-check-input"  type="checkbox" value="" id="check">
         <label class="form-check-label ml-1" for="check">{{todo.todo_text}}</label>
