@@ -38,12 +38,15 @@
   </nav>
 </header>
 <div style="margin-top: 7rem;">
-<div class="input-group input-group-lg mb-3" style="max-width: 1110px;">
-  <input type="text" class="form-control input" placeholder="Add Task..." style="height: 3.7rem;">
-  <button class="todo-button" type="submit">
-    <i class="fa-solid fa-square-plus fa-2xl" style="margin-right: 0.7rem;"></i>
-  </button>
-</div>
+<form method="POST" action="">
+  {% csrf_token %}
+  <div class="input-group input-group-lg mb-3" style="max-width: 1110px;">
+    <input type="text" class="form-control input" placeholder="Add Task..." style="height: 3.7rem;">
+    <button class="todo-button" type="submit">
+      <i class="fa-solid fa-square-plus fa-2xl" style="margin-right: 0.7rem;"></i>
+    </button>
+  </div>
+</form>
 <div class="scrollbar">
   <style>
     .input {
