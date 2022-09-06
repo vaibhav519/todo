@@ -9,6 +9,13 @@ from . forms import ToDoForm
 
 @login_required(login_url='login')
 def home(request):
+    if request.method == 'POST':
+        form = ToDoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('todo-home')
+        else:
+            form = ToDoForm()
     context = {
         'todos': TodoContent.objects.all().order_by('-date_posted')
     }
@@ -30,7 +37,7 @@ class PostListView(LoginRequiredMixin, ListView):
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = TodoContent
     form_class = ToDoForm
-    template_name = 'todoapp/create.html'
+    template_name = 'todoapp/home.html'
 
     def form_valid(self, form):
         form.instance.author = self.request.user

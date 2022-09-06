@@ -10,3 +10,4 @@ class ToDoForm(forms.ModelForm):
         widgets = {
             'todo_text': forms.TextInput(attrs={'class': 'form-control form-control-lg', 'placeholder': "Enter Task"})
         }
+        
