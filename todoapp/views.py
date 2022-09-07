@@ -14,10 +14,11 @@ def home(request):
         if form.is_valid():
             form.save()
             return redirect('todo-home')
-        else:
-            form = ToDoForm()
+    else:
+        form = ToDoForm()
     context = {
-        'todos': TodoContent.objects.all().order_by('-date_posted')
+        'todos': TodoContent.objects.all().order_by('-date_posted'),
+        'form': form,
     }
     return render(request, 'todoapp/home.html', context)
 
