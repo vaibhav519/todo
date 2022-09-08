@@ -17,7 +17,7 @@ def home(request):
     else:
         form = ToDoForm()
     context = {
-        'todos': TodoContent.objects.all().order_by('-date_posted'),
+        'todos': TodoContent.objects.all().filter(author=request.user).order_by('-date_posted'),
         'form': form,
     }
     return render(request, 'todoapp/home.html', context)
